@@ -1,5 +1,12 @@
 <%include partials/header %>
 
+  <% if (messages.length > 0) { %>
+    <div class="alert alert-danger">
+      <%= messages %>
+    </div>
+    <% } else { %>
+      <div class="alert alert-info">Please enter your credentials</div>
+    <% } %>
     <div class="container">
         <h1>
             <%= title %>
@@ -12,10 +19,10 @@
               <div class="card-body">
                 <form method="POST">  
                   <div class="form-group row">
-                    <label for="email" class="col-sm-4 col-form-label text-md-right">E-Mail Address</label>
+                    <label for="username" class="col-sm-4 col-form-label text-md-right">Username</label>
     
                       <div class="col-md-6">
-                        <input id="email" type="email" class="form-control" name="email">
+                        <input id="username" type="username" class="form-control" name="username">
                       </div>
                       
                   </div>

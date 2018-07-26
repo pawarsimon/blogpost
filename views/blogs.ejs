@@ -3,7 +3,15 @@
 <%= title %>
 <% for (let i =  0; i < posts.length; i++) { %>
     <div class="container">
-        <h1><%= posts[i].title %></h1>
+        <h1>Title: <%= posts[i].title %></h1>
+        <div class="container">
+            <p>Body: <%= posts[i].body %></p>
+            <a href="/blogs/edit/<%= posts[i]._id %>", class="btn btn-primary">
+                Edit
+            </a>
+            <a href="/blogs/delete/<%= posts[i]._id %>", class="pull right btn btn-danger">Delete</a>
+        </div>
+        <hr>
     </div>
     <% } %>
 

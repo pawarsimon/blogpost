@@ -14,22 +14,58 @@ exports.getBlogs = (req,res) => {
             res.render('blogs',{
                 title: 'All posts',
                 posts,
+                user: req.user,
             });
         }
     });
 };
-// exports.getBlogs = (req, res) => 
-// {
-//     res.render('blogs',{
-//         title: 'All Posts'
-//     });
-// }
-exports.register = (req,res) => {
-    res.render('register',{
-    title: 'Register'})
+
+exports.addPost = (req, res) => {
+    res.render('createPost', {
+        title: 'Create Post'
+    })
 }
 
-exports.login = (req,res) => {
-    res.render('login',{
-    title: 'Login'})
+exports.createPost = (req, res) => {
+    try{
+    const post = new Post(req.body);
+    post.save();
+    res.redirect('/blogs');
+    }catch(err){
+        console.log(err);
+    }
+}
+
+exports.deletePost = (req, res) => {
+    Post.remove({_id: req.params.id},(err) => {
+        if (err) {
+            console.log(err);
+        }else{
+            res.redirect('/blogs')
+        }
+    })
+}
+
+
+exports.editPost = (req, res) => {
+    Post.findById(req.params.id, (err, games) => {
+        if(err){
+            console.log(err);
+        }else{
+            res.render('editPost', {
+                title: 'Edit',
+                Post,
+            })
+        }
+    })
+}
+
+exports.updatePost = (req, res) => {
+    Post.update({_id: req.params.id}, req.body, (err) => {
+        if(err){
+            console.log(err);
+        }else{
+            res.redirect('/blogs');
+        }
+    })
 }

@@ -26,4 +26,9 @@ router.post('/register', userController.registerUser);
 
 router.get('/login', userController.login);
 router.post('/login', authController.login);
+
+//Logout
+router.get('/logout', (req, res) => {
+    res.redirect('/');
+})
 module.exports = router;

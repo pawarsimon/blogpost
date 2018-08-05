@@ -3,6 +3,7 @@ const Post = require('../models/Post');
 exports.homePage = (req, res) => {
     res.render('index', {
     title: 'Home',
+    user: req.user,
     });
   };
 
@@ -22,7 +23,8 @@ exports.getBlogs = (req,res) => {
 
 exports.addPost = (req, res) => {
     res.render('createPost', {
-        title: 'Create Post'
+        title: 'Create Post',
+        user: req.user,
     })
 }
 
@@ -55,6 +57,7 @@ exports.editPost = (req, res) => {
             res.render('editPost', {
                 title: 'Edit',
                 Post,
+                user: req.user,
             })
         }
     })

@@ -16,7 +16,8 @@ exports.registerUser = (req, res) => {
         if(err) {
             return res.render('register', {
                 title: 'Register',
-                warning: 'That username is not available'
+                warning: 'That username is not available',
+                user: req.user,
             });
         }
         res.redirect('/login'); 

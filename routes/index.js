@@ -10,7 +10,7 @@ router.get('/blogs', authController.isLoggedIn, pageController.getBlogs);
 
 
 //add post
-router.post('/add', pageController.createPost)
+router.post('/add', authController.isLoggedIn, pageController.createPost)
 router.get('/create', pageController.addPost);
 //router.post('/create', pageController.createPost);
 
@@ -28,7 +28,7 @@ router.get('/login', userController.login);
 router.post('/login', authController.login);
 
 //Logout
-router.get('/logout', (req, res) => {
+router.get('/logout', authController.isLoggedIn, (req, res) => {
     res.redirect('/');
 })
 module.exports = router;

@@ -1,5 +1,10 @@
 <%include partials/header %>
 
+<style>
+  .container, form{
+    margin: 50px auto;
+  }
+</style>
   <% if (messages.length > 0) { %>
     <div class="alert alert-danger">
       <%= messages %>
@@ -40,10 +45,13 @@
                               Login
                           </button>
                       </div>
-              </form>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
       </div>
-    </div>
-  </div>
-<%include partials/footer %>
+  
+        <%include partials/footer %>
+

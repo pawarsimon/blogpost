@@ -29,6 +29,8 @@ router.post('/login', authController.login);
 
 //Logout
 router.get('/logout', authController.isLoggedIn, (req, res) => {
+    
     res.redirect('/');
+   
 })
 module.exports = router;
